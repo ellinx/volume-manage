@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en-US">
    <head>
       <title>BM System</title>
-      <script type="text/javascript" src=""></script>
+      <!--<script type="text/javascript" src="js/ng.js"></script>-->
+      <script src="js/angular.min.js"></script>
    </head>
-   <body>
-
+   <body ng-app="myApp" ng-controller="myCtrl">
+      <h1>Book List:</h1>
+      <p ng-repeat="x in Books">{{x.name}}</p>
    </body>
 </html>
