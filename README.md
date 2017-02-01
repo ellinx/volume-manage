@@ -1,3 +1,3 @@
 # volume-manage
 
-This is project readme file.
+This is a book management system.
