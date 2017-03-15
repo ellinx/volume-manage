@@ -1,13 +1,130 @@
 <!DOCTYPE html>
-
-<html lang="en-US">
+<html lang="en">
    <head>
-      <title>BM System</title>
-      <!--<script type="text/javascript" src="js/ng.js"></script>-->
-      <script src="js/angular.min.js"></script>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<title>RaidIndex</title>
+
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/element.css" />
+
+      <link href="image/favicon_elx.ico" rel="icon">
+
+      <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300">
+      <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+      <script type="text/javascript" src="js/jquery-ui-1.11.2.min.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/PieChart.js"></script>
+      <script type="text/javascript" src="js/WsStorage.js"></script>
+      <script type="text/javascript" src="js/WsConfiguration.js"></script>
+      <script type="text/javascript" src="js/WsDataStructure.js"></script>
+
    </head>
-   <body ng-app="myApp" ng-controller="myCtrl">
-      <h1>Book List:</h1>
-      <p ng-repeat="x in Books">{{x.name}}</p>
+   <body class="MainBody" onload="main( );">
+      <noscript>
+         <p class="Error">Please enable Javascript for the webpage to work properly.</p>
+      </noscript>
+      <table width="100%" class="topbar">
+         <tr>
+            <td colspan="2">
+               <p class="Title">Volume manage</p>
+               <p style="font-size:12px;color:green;font-weight:bold;">
+               	<span id="WebStatus">&nbsp;Trying to get connected, please wait...</span>&emsp;
+               	<span id="VNErrorMsg" style="color:red;display:none;">Version Negotiation fails!</span>
+               </p>
+            </td>
+         </tr>
+
+         <tr>
+            <div id="idNaviBar">
+               <nav>
+                  <th id="idSummaryTab" class="selected" style="width:50%"><a href='#' class='tab'>Summary</a></th>
+                  <th id="idVolumeTab" class="unselected" style="width:50%"><a href='#' class='tab'>Volume</a></th>
+               </nav>
+            </div>
+         </tr>
+
+         <tr>
+            <td bgcolor="#444444" colspan="3" class="viewport">
+
+               <div id="idSummary">
+
+               </div>
+
+					<!--
+						@[scrap
+							@@name NavVolumeBtnClick
+							@@embed true
+							@@assert ok($("#idVolumeTab"), "No valid test element button")
+							@@code [
+								$("#idVolumeTab").click();
+							]
+						]@
+					-->
+               <div id="idVolume">
+                  <div id="accordion">
+                     <div class="accordionCardButton">
+                        <font size="5" color="#ECECEC">Volume/Partition List</font>
+                     </div>
+
+                     <div class="accordionCardContent">
+
+                        <div id="createA" class="accordionPartitionBtn" style="cursor:default;"><font size='4' color='#E8E8E8'>CREATE PARTITION</font></div>
+                        <div class="accordionPartition" >
+                           <font size="4" color="#DFDFDF">
+                           <p align=center>Complete Required Fields</p>
+                           <div class="PartitionInfoBorder" style="line-height:200%">
+                              &emsp;&nbsp;<u>Available Space</u>:<br>
+                              &emsp;&nbsp;Total Free space:&nbsp;<span class="TotalFreeSpace SpaceData"> 0 </span><span class="TotalFreeUnit">&nbsp;Byte</span><br>
+                              &emsp;&nbsp;Total Free space on Card A:&nbsp;<span id="totalFreeA" class="SpaceData"> 0 </span><span id="totalFreeAUnit">&nbsp;Byte</span>
+                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Largest possible JBOD on Card A:&nbsp;<span id="possibleJBODA" class="SpaceData"> 0 </span><span id="possibleJBODAUnit">&nbsp;Byte</span><br>
+                              &emsp;&nbsp;Largest possible Stripe:&nbsp;<span class="PossibleStripeSpace SpaceData" > 0 </span><span class="PossibleStripeUnit">&nbsp;Byte</span>
+                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Largest possible Mirror:&nbsp;<span class="PossibleMirrorSpace SpaceData"> 0 </span><span class="PossibleMirrorUnit">&nbsp;Byte</span>
+                              <br>
+                              <span id="PartitionNumA" style="display:none">0</span>
+                           </div>
+                           <p>
+                           	&emsp;&emsp;Required Volume Name:<br>
+
+                              &emsp;&emsp;<input type="text" id="NewPartNameA" size="64" maxlength="64" oninput="validateNewPartName('A')" >
+                              &nbsp;<span id="volumeNameErrorMsgA" style="font-size:14px;color:red;font-weight:bold;display:none;">Not a valid volume name!!!</span>
+                           </p>
+
+                           <p>&emsp;&emsp;Partition Size:&nbsp;
+                              <input id="PartitionSizeA" size="6" type="number" maxlength="5" step="1" min="1" max="32000" value="16000" onkeyup="validateNewPartSize('A')" onmouseup="validateNewPartSize('A')">&nbsp;&nbsp;
+                              <select id="selectKBMBGBA" onchange="validateNewPartSize('A');">
+                              	<option value="KB">KB</option>
+                                 <option value="MB" selected>MB</option>
+                                 <option value="GB">GB</option>
+                              </select>
+                              &nbsp;<span id="volumeSizeErrorMsgA" style="font-size:14px;color:red;font-weight:bold;display:none;">Not enough space!!!</span>
+                              <font color="#FF1010"><span id="lowspaceA" style="float: right;" class="ShiftLeft60" >&emsp;</span></font>
+                           </p>
+
+
+                           <p style="width=95%;">
+
+										&emsp;&emsp;<span id="definePartErrorMsgA" style="font-size:14px;color:red;font-weight:bold;"></span>
+
+                              <button id="BtnCreatePartitionA"  style='float:right;' onclick="sendDefinePartition('A');" class="ButtonCreatePart" disabled>&emsp;Submit&emsp;</button><br>
+                           </p>
+                        </div>
+                        </font>
+
+                        <span id="uploadDownloadOffsetA"></span>
+
+                     	<div id="CardAPartitionList" class="PartitionBorder"></div>
+
+                     </div>
+
+                     </div>
+                  </div>
+               </div>
+
+              
+
+            </td>
+         </tr>
+      </table>
    </body>
 </html>
