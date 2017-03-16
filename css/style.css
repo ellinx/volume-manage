@@ -1,7 +1,7 @@
 
 a.tab:link {
     text-decoration: none;
-    color:#DDDDDD;
+    color:#000000;
 }
 
 a.tab:visited {
@@ -10,21 +10,19 @@ a.tab:visited {
 }
 
 body {
-   color: #DDDDDD;
-   /*font-family: Serif, Times;*/
+   /*color: #DDDDDD;*/
    font-family: "Quattrocento Sans","Helvetica Neue",Arial,sans-serif;
    font-size: 18pt;
    padding: 1em;
-   background-color: #484644;
+   /*background-color: #484644;*/
 }
 
 body.MainBody {
-   color: #DDDDDD;
-   /*font-family: Serif, Times;*/
+   /*color: #DDDDDD;*/
    font-family: "Quattrocento Sans","Helvetica Neue",Arial,sans-serif;
    font-size: 18pt;
    padding: 1em;
-   background-color: #222222;
+   /*background-color: #222222;*/
 }
 
 tr {
@@ -38,7 +36,7 @@ th {
 }
 
 #idSummaryTab{
-	border-right:2px solid #DDDDDD;
+	border-right:2px solid #bdbfc1;
 }
 
 
@@ -58,11 +56,11 @@ p.Error {
 }
 
 .selected {
-   background: #484644;
+   background: #bdbfc1;
 }
 
 .viewport {
-   background-color: #484644;
+   /*background-color: #484644;*/
    border-spacing: 0;
 }
 
