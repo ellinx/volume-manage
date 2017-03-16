@@ -46,7 +46,7 @@ table.topbar {
 }
 
 table.Viewport {
-   background-color: #484644;
+   background-color: #bdbfc1;
    border-style: none;
    border-spacing: 0;
 }
@@ -59,10 +59,6 @@ p.Error {
    background: #bdbfc1;
 }
 
-.viewport {
-   /*background-color: #484644;*/
-   border-spacing: 0;
-}
 
 /*.image {
    position:relative;
