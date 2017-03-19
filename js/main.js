@@ -13,16 +13,16 @@ $(document).ready(function(){
 function NavBar() {
    $("#idVolume").hide();
 
-   $("#idSummaryTab").click( function() {
+   $("#idHomeTab").click( function() {
       SelectNaviBar(1);
-      $("#idSummary").show('normal');
+      $("#idHome").show('normal');
       $("#idVolume").hide();
    } );
 
    $("#idVolumeTab").click(  function() {
       SelectNaviBar(2);
       $("#idVolume").show('normal');
-      $("#idSummary").hide();
+      $("#idHome").hide();
    } );
 
 }
@@ -30,15 +30,15 @@ function NavBar() {
 function SelectNaviBar(index) {
    switch(index) {
       case 1:
-         $("#idSummaryTab").removeClass("unselected").addClass("selected");
+         $("#idHomeTab").removeClass("unselected").addClass("selected");
          $("#idVolumeTab").removeClass("selected").addClass("unselected");
          break;
       case 2:
-         $("#idSummaryTab").removeClass("selected").addClass("unselected");
+         $("#idHomeTab").removeClass("selected").addClass("unselected");
          $("#idVolumeTab").removeClass("unselected").addClass("selected");
          break;
       case 3:
-         $("#idSummaryTab").removeClass("selected").addClass("unselected");
+         $("#idHomeTab").removeClass("selected").addClass("unselected");
          $("#idVolumeTab").removeClass("selected").addClass("unselected");
          break;
    }

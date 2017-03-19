@@ -1,100 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<title>BooksIndex</title>
 
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/element.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/element.css" />
 
-      <link href="image/favicon_elx.ico" rel="icon">
+    <link href="image/favicon_elx.ico" rel="icon">
 
-      <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300">
-      <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-      <script type="text/javascript" src="js/jquery-ui-1.11.2.min.js"></script>
-      <script type="text/javascript" src="js/main.js"></script>
-      <script type="text/javascript" src="js/PieChart.js"></script>
-      <script type="text/javascript" src="js/WsStorage.js"></script>
-      <script type="text/javascript" src="js/WsConfiguration.js"></script>
-      <script type="text/javascript" src="js/WsDataStructure.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300">
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/Content.js"></script>
+    <script type="text/javascript" src="js/WsConfig.js"></script>
+    <script type="text/javascript" src="js/WsData.js"></script>
 
-   </head>
-   <body class="MainBody" onload="main( );">
-      <noscript>
-         <p class="Error">Please enable Javascript for the webpage to work properly.</p>
-      </noscript>
-      <table width="100%" class="topbar">
-         <tr>
-            <td colspan="2">
-               <p class="Title">Books Management System</p>
-            </td>
-         </tr>
+  </head>
+  <body class="MainBody" onload="main( );">
+    <noscript>
+      <p class="Error">Please enable Javascript for the webpage to work properly.</p>
+    </noscript>
+    <table width="100%" class="topbar">
+      <tr>
+        <td colspan="2">
+          <p class="Title">Books Management System</p>
+        </td>
+      </tr>
 
-         <tr>
-            <div id="idNaviBar">
-               <nav>
-                  <th id="idSummaryTab" class="selected" style="width:50%"><a href='#' class='tab'>Summary</a></th>
-                  <th id="idVolumeTab" class="unselected" style="width:50%"><a href='#' class='tab'>Book List</a></th>
-               </nav>
-            </div>
-         </tr>
+      <tr>
+        <div id="idNaviBar">
+          <nav>
+            <th id="idHomeTab" class="selected" style="width:50%"><a href='#' class='tab'>Home</a></th>
+            <th id="idVolumeTab" class="unselected" style="width:50%"><a href='#' class='tab'>Book List</a></th>
+          </nav>
+        </div>
+      </tr>
 
-         <tr>
-            <td bgcolor="#bdbfc1" colspan="3">
+      <tr>
+        <td bgcolor="#bdbfc1" colspan="3">
 
-               <div id="idSummary">
-                 <p>This is summary.<p>
-               </div>
-
-
-               <div id="idVolume">
-                  <div id="accordion">
-                     <div class="accordionCardButton">
-                        <font size="5" color="#ECECEC">Book List</font>
-                     </div>
-
-                     <div class="accordionCardContent">
-
-                        <div id="create" class="accordionPartitionBtn" style="cursor:default;"><font size='4' color='#E8E8E8'>Add New Book</font></div>
-                        <div class="accordionPartition" >
-                           <font size="4" color="#DFDFDF">
-                           <p align=center>Complete Required Fields</p>
-                           <p>
-                           	&emsp;&emsp;Book Name:<br>
-                              &emsp;&emsp;<input type="text" id="NewBookName" size="64" maxlength="64" oninput="validateNewBookName()" >
-                              &nbsp;<span id="bookNameErrorMsg" style="font-size:14px;color:red;font-weight:bold;display:none;">Not a valid book name!!!</span>
-                           </p>
-
-                           <p>&emsp;&emsp;Category:&nbsp;
-                              <select id="selectBookCategory" onchange="">
-                              	<option value="0">Fiction</option>
-                                 <option value="1" selected>Poetry</option>
-                                 <option value="2">Literature</option>
-                              </select>
-                           </p>
+          <div id="idHome">
+            <p>This is home page.<p>
+          </div>
 
 
-                           <p style="width=95%;">
+          <div id="idVolume">
+            <div id="accordion">
+              <div class="accordionCardButton">
+                <font size="5" color="#ECECEC">Book List</font>
+              </div>
 
-										          &emsp;&emsp;<span id="addBookErrorMsg" style="font-size:14px;color:red;font-weight:bold;"></span>
+              <div class="accordionCardContent">
 
-                              <button id="BtnCreatePartitionA"  style='float:right;' onclick="" class="ButtonCreatePart" disabled>&emsp;Add&emsp;</button><br>
-                           </p>
-                        </div>
-                        </font>
-                     	<div id="BookList" class="PartitionBorder"></div>
+                <div id="create" class="accordionPartitionBtn" style="cursor:default;"><font size='4' color='#E8E8E8'>Add New Book</font></div>
+                  <div class="accordionPartition" >
+                    <font size="4" color="#DFDFDF">
+                      <p align=center>Complete Required Fields</p>
+                      <p>
+                        &emsp;&emsp;Book Name:<br>
+                        &emsp;&emsp;<input type="text" id="NewBookName" size="64" maxlength="64" oninput="validateNewBookName()" >
+                        &nbsp;<span id="bookNameErrorMsg" style="font-size:14px;color:red;font-weight:bold;display:none;">Not a valid book name!!!</span>
+                      </p>
 
-                     </div>
+                      <p>&emsp;&emsp;Category:&nbsp;
+                        <select id="selectBookCategory" onchange="">
+                          <option value="0">Fiction</option>
+                          <option value="1" selected>Poetry</option>
+                          <option value="2">Literature</option>
+                        </select>
+                      </p>
 
-                     </div>
+
+                      <p style="width=95%;">
+
+									      &emsp;&emsp;<span id="addBookErrorMsg" style="font-size:14px;color:red;font-weight:bold;"></span>
+
+                        <button id="BtnCreatePartitionA"  style='float:right;' onclick="" class="ButtonCreatePart" disabled>&emsp;Add&emsp;</button><br>
+                      </p>
+                    </font>
                   </div>
-               </div>
 
+                  <div id="BookList" class="PartitionBorder"></div>
 
+              </div>
 
-            </td>
-         </tr>
-      </table>
-   </body>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
