@@ -5,9 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var config = require('./config');
 
-var url = 'mongodb://localhost:27017/BMS';
-mongoose.connect(url);
+
+mongoose.connect(config.mongoUrl);
 var db =mongoose.connection;
 db.on('error',console.error.bind(console, 'connection error:'));
 db.once('open', function(){

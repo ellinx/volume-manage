@@ -41,9 +41,8 @@ var bookSchema = new Schema({
     timestamps: true
 });
 
-// the schema is useless so far
 // we need to create a model using it
 var Books = mongoose.model('Book', bookSchema);
 
-// make this available to our Node applications
+// make this available to the applications
 module.exports = Books;
