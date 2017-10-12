@@ -1,0 +1,12 @@
+{
+  "name": "webcrawler",
+  "version": "0.0.0",
+  "description": "A simple webcrawler",
+  "main": "crawler.js",
+  "author": "Ellinx",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "url-parse": "^1.0.5",
+    "request": "^2.65.0"
+  }
+}
